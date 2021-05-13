@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    name: ${DOCKER_DB_NAME}
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DBNAME}
+    volumes:
+      - ../data:/var/lib/postgresql/data
+      - ./init/:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+  db-admin:
+    name: ${DOCKER_ADMIN_NAME}
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
