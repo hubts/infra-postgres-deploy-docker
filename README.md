@@ -68,5 +68,17 @@ chmod +x run.sh
 docker -ps
 ~~~
 
+혹시 docker 명령어에 대한 아래와 같은 에러가 발생한다면:
+
+~~~bash
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json: dial unix /var/run/docker.sock: connect: permission denied
+~~~
+
+다음 명령어를 실행하여 사용자 접근 권한을 변경한다.
+
+~~~bash
+sudo chmod 666 /var/run/docker.sock
+~~~
+
 
 
