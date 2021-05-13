@@ -1,7 +1,6 @@
 version: '3'
 services:
   db:
-    name: ${DOCKER_DB_NAME}
     image: postgres
     restart: always
     environment:
@@ -12,8 +11,7 @@ services:
       - ./init/:/docker-entrypoint-initdb.d/
     ports:
       - 5432:5432
-  db-admin:
-    name: ${DOCKER_ADMIN_NAME}
+  admin:
     image: adminer
     restart: always
     ports:

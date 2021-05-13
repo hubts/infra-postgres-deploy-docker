@@ -39,13 +39,24 @@ docker 를 다루기 위한 디렉토리를 만들어준다.
 mkdir docker && cd docker
 ~~~
 
-구성된 코드들을 git clone 하여 다운로드한다. 그러면, docker 디렉토리에 2개의 파일이 생긴다. `run.sh` 에 원하는 정보를 대입한다.
+구성된 코드들을 git clone 하여 다운로드한다. 그러면, docker 디렉토리에 2개의 파일이 생긴다. 
+
+`run.sh` 에 원하는 정보를 대입한다.
 
 ~~~bash
 vim run.sh
 ~~~
 
-작성을 완료하였으면, 쉘 스크립트를 실행한다.
+- `DB_PASSWORD` : DB 접속 비밀번호
+- `DB_DBNAME` : DB 의 데이터베이스 이름 (DB 종류가 아닌, 설정한 이름)
+
+작성을 완료하였으면, 실행 이전에 실행 권한을 추가해준다.
+
+~~~bash
+chmod +x run.sh
+~~~
+
+쉘 스크립트를 실행한다.
 
 ~~~bash
 ./run.sh
