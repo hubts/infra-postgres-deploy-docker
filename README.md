@@ -1,12 +1,12 @@
-# Docker 기반 데이터베이스 빠르게 올리기
+# 데이터베이스 postgres 빠르게 세팅하기
 
 ## 목적
 
-원하는 서버에 'Docker image 가 존재하는 데이터베이스'를 빠르게 올리고 구동하기 위한 방법을 메모한다.
+서버에 postgres 의 docker image 를 빠르게 올려 이용할 수 있도록 세팅하기
 
 ## 주의
 
-본 수행은 __Ubuntu__ 에서 이루어졌으므로, 다른 운영체제는 다른 명령어를 이용해야 할 수 있다.
+본 내용은 __Ubuntu__ 운영체제에서 이루어졌으므로 다른 운영체제는 별도 명령어를 참조해야 한다.
 
 ## 구성
 
@@ -27,7 +27,7 @@ docker-compose 명령어가 존재하는지 확인한다.
 docker-compose --version
 ~~~
 
-없다고 나오면, 일반적으로 명령어를 추천해준다. 아래 명령어를 통해 설치를 수행한다.
+없다고 나오면서 설치 명령어를 추천해줄 것이다. 아래 명령어를 통해 설치를 수행한다.
 
 ~~~bash
 sudo apt install docker-compose
@@ -47,8 +47,9 @@ mkdir docker && cd docker
 vim run.sh
 ~~~
 
+- `DB_USERNAME` : DB 사용자 이름
 - `DB_PASSWORD` : DB 접속 비밀번호
-- `DB_DBNAME` : DB 의 데이터베이스 이름 (DB 종류가 아닌, 설정한 이름)
+- `DB_DBNAME` : DB 의 데이터베이스 이름 (DB 의 종류가 아닌, 설정할 이름)
 
 작성을 완료하였으면, 실행 이전에 실행 권한을 추가해준다.
 
@@ -62,7 +63,7 @@ chmod +x run.sh
 ./run.sh
 ~~~
 
-일련의 docker image 설치 혹은 불러오기가 끝나면, 두 개의 docker container 가 실행된다. 아래 명령어로 살아있음을 확인한다.
+일련의 docker image 설치 혹은 불러오기가 끝나면, 두 개의 docker container 가 실행된다. 아래 명령어로 확인한다.
 
 ~~~bash
 docker -ps
@@ -79,6 +80,3 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 ~~~bash
 sudo chmod 666 /var/run/docker.sock
 ~~~
-
-
-
