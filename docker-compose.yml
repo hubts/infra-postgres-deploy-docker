@@ -2,19 +2,21 @@ version: "3"
 services:
     db:
         image: postgres
+        container_name: ${DB_CONTAINER_NAME}
         restart: always
         environment:
             POSTGRES_USER: ${DB_USERNAME}
             POSTGRES_PASSWORD: ${DB_PASSWORD}
             POSTGRES_DB: ${DB_DBNAME}
-            POSTGRES_INITDB_ARGS: encoding=UTF-8
+            POSTGRES_INITDB_ARGS: --encoding=UTF-8
         volumes:
             - ./data:/var/lib/postgresql/data
             - ./init/:/docker-entrypoint-initdb.d/
         ports:
-            - 5432:5432
+            - ${DB_PORT}:5432
     admin:
         image: adminer
+        container_name: ${ADMIN_CONTAINER_NAME}
         restart: always
         ports:
-            - 8080:8080
+            - ${ADMIN_PORT}:8080
